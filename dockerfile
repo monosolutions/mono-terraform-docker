@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:0.11.5
+FROM hashicorp/terraform:0.11.7
 RUN  apk -v --update add \
               python \
               py-pip \
