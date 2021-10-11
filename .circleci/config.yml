@@ -1,11 +1,11 @@
 version: 2
 jobs:
-    build:   
+    build:
         working_directory: /tmp/repo 
         docker:
             - image: docker:17.09.1-ce-git
         steps:
-            - checkout 
+            - checkout
             - setup_remote_docker:
                 docker_layer_caching: true
                 version: 17.05.0-ce
@@ -15,7 +15,6 @@ jobs:
             - run: 
                 name: push to repository
                 command: |
-                    docker login  -u $DOCKER_USER -p $DOCKER_PASS
+                    echo $DOCKER_PASS | docker login  -u $DOCKER_USER --password-stdin
                     docker push monosolutions/terraform:1.0.$CIRCLE_BUILD_NUM
                     docker push monosolutions/terraform:latest
-           
